@@ -1,0 +1,50 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="BdClinicaModelStoreContainer" CdmEntityContainer="BdClinicaEntities">
+    <EntitySetMapping Name="NET_MTO_ASCESOR">
+      <EntityTypeMapping TypeName="BdClinicaModel.NET_MTO_ASCESOR">
+        <MappingFragment StoreEntitySet="NET_MTO_ASCESOR">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="nombre" ColumnName="nombre" />
+          <ScalarProperty Name="estado" ColumnName="estado" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="NET_MTO_SOLICITUDES">
+      <EntityTypeMapping TypeName="BdClinicaModel.NET_MTO_SOLICITUDES">
+        <MappingFragment StoreEntitySet="NET_MTO_SOLICITUDES">
+          <ScalarProperty Name="estado_compras" ColumnName="estado_compras" />
+          <ScalarProperty Name="id_compras" ColumnName="id_compras" />
+          <ScalarProperty Name="id_area_encargada" ColumnName="id_area_encargada" />
+          <ScalarProperty Name="estado_solicitud" ColumnName="estado_solicitud" />
+          <ScalarProperty Name="firma_area" ColumnName="firma_area" />
+          <ScalarProperty Name="id_tecnico" ColumnName="id_tecnico" />
+          <ScalarProperty Name="firma_jefe" ColumnName="firma_jefe" />
+          <ScalarProperty Name="firma_tecnico" ColumnName="firma_tecnico" />
+          <ScalarProperty Name="fecha_finalizada" ColumnName="fecha_finalizada" />
+          <ScalarProperty Name="fecha_inicio" ColumnName="fecha_inicio" />
+          <ScalarProperty Name="fecha_reporte" ColumnName="fecha_reporte" />
+          <ScalarProperty Name="id_area" ColumnName="id_area" />
+          <ScalarProperty Name="id_equipo" ColumnName="id_equipo" />
+          <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="NET_COMP_SOLICITUD_COMPRA">
+      <EntityTypeMapping TypeName="BdClinicaModel.NET_COMP_SOLICITUD_COMPRA">
+        <MappingFragment StoreEntitySet="NET_COMP_SOLICITUD_COMPRA">
+          <ScalarProperty Name="numero_oc" ColumnName="numero_oc" />
+          <ScalarProperty Name="fecha_finalizada" ColumnName="fecha_finalizada" />
+          <ScalarProperty Name="id_estado_proceso" ColumnName="id_estado_proceso" />
+          <ScalarProperty Name="usuario_solicitud" ColumnName="usuario_solicitud" />
+          <ScalarProperty Name="id_servicio_encargado" ColumnName="id_servicio_encargado" />
+          <ScalarProperty Name="id_servicio_requiere" ColumnName="id_servicio_requiere" />
+          <ScalarProperty Name="fecha_solicitud" ColumnName="fecha_solicitud" />
+          <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

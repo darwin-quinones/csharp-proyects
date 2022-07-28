@@ -1,0 +1,66 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="BdClinicaModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="NET_COMP_SOLICITUD_COMPRA">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="descripcion" Type="varchar(max)" Nullable="false" />
+    <Property Name="fecha_solicitud" Type="datetime" Nullable="false" />
+    <Property Name="id_servicio_requiere" Type="int" Nullable="false" />
+    <Property Name="id_servicio_encargado" Type="int" Nullable="false" />
+    <Property Name="usuario_solicitud" Type="nvarchar" MaxLength="22" Nullable="false" />
+    <Property Name="id_estado_proceso" Type="int" Nullable="false" />
+    <Property Name="fecha_finalizada" Type="datetime" />
+    <Property Name="numero_oc" Type="int" />
+  </EntityType>
+  <EntityType Name="NET_MTO_ASCESOR">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="nombre" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="estado" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="NET_MTO_SOLICITUDES">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="descripcion" Type="varchar(max)" Nullable="false" />
+    <Property Name="id_equipo" Type="int" Nullable="false" />
+    <Property Name="id_area" Type="int" Nullable="false" />
+    <Property Name="fecha_reporte" Type="datetime" Nullable="false" />
+    <Property Name="fecha_inicio" Type="datetime" />
+    <Property Name="fecha_finalizada" Type="datetime" />
+    <Property Name="firma_tecnico" Type="varchar" MaxLength="50" />
+    <Property Name="firma_jefe" Type="varchar" MaxLength="50" />
+    <Property Name="id_tecnico" Type="int" />
+    <Property Name="firma_area" Type="varchar" MaxLength="50" />
+    <Property Name="estado_solicitud" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="id_area_encargada" Type="int" />
+    <Property Name="id_compras" Type="int" />
+    <Property Name="estado_compras" Type="int" />
+  </EntityType>
+  <Association Name="FK_NET_MTO_SOLICITUDES_NET_COMP_SOLICITUD_COMPRA">
+    <End Role="NET_COMP_SOLICITUD_COMPRA" Type="Self.NET_COMP_SOLICITUD_COMPRA" Multiplicity="0..1" />
+    <End Role="NET_MTO_SOLICITUDES" Type="Self.NET_MTO_SOLICITUDES" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="NET_COMP_SOLICITUD_COMPRA">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="NET_MTO_SOLICITUDES">
+        <PropertyRef Name="id_compras" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="BdClinicaModelStoreContainer">
+    <EntitySet Name="NET_COMP_SOLICITUD_COMPRA" EntityType="Self.NET_COMP_SOLICITUD_COMPRA" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="NET_MTO_ASCESOR" EntityType="Self.NET_MTO_ASCESOR" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="NET_MTO_SOLICITUDES" EntityType="Self.NET_MTO_SOLICITUDES" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_NET_MTO_SOLICITUDES_NET_COMP_SOLICITUD_COMPRA" Association="Self.FK_NET_MTO_SOLICITUDES_NET_COMP_SOLICITUD_COMPRA">
+      <End Role="NET_COMP_SOLICITUD_COMPRA" EntitySet="NET_COMP_SOLICITUD_COMPRA" />
+      <End Role="NET_MTO_SOLICITUDES" EntitySet="NET_MTO_SOLICITUDES" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

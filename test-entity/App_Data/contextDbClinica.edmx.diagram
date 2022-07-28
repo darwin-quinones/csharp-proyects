@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="30e037544b234406923e0899ade6fd50" Name="Diagram1">
+        <EntityTypeShape EntityType="BdClinicaModel.NET_MTO_ASCESOR" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="BdClinicaModel.NET_MTO_SOLICITUDES" Width="1.5" PointX="3.375" PointY="0.75" />
+        <EntityTypeShape EntityType="BdClinicaModel.NET_COMP_SOLICITUD_COMPRA" Width="1.5" PointX="1.125" PointY="3.375" />
+        <AssociationConnector Association="BdClinicaModel.FK_NET_MTO_SOLICITUDES_NET_COMP_SOLICITUD_COMPRA" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

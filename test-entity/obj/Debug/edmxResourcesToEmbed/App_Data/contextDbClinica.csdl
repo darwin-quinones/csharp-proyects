@@ -1,0 +1,68 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="BdClinicaModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="NET_MTO_ASCESOR">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="estado" Type="Boolean" Nullable="false" />
+  </EntityType>
+  <EntityContainer Name="BdClinicaEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="NET_MTO_ASCESOR" EntityType="Self.NET_MTO_ASCESOR" />
+    <EntitySet Name="NET_MTO_SOLICITUDES" EntityType="BdClinicaModel.NET_MTO_SOLICITUDES" />
+    <EntitySet Name="NET_COMP_SOLICITUD_COMPRA" EntityType="BdClinicaModel.NET_COMP_SOLICITUD_COMPRA" />
+    <AssociationSet Name="FK_NET_MTO_SOLICITUDES_NET_COMP_SOLICITUD_COMPRA" Association="BdClinicaModel.FK_NET_MTO_SOLICITUDES_NET_COMP_SOLICITUD_COMPRA">
+      <End Role="NET_COMP_SOLICITUD_COMPRA" EntitySet="NET_COMP_SOLICITUD_COMPRA" />
+      <End Role="NET_MTO_SOLICITUDES" EntitySet="NET_MTO_SOLICITUDES" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="NET_MTO_SOLICITUDES">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="descripcion" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="id_equipo" Type="Int32" Nullable="false" />
+    <Property Name="id_area" Type="Int32" Nullable="false" />
+    <Property Name="fecha_reporte" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="fecha_inicio" Type="DateTime" Precision="3" />
+    <Property Name="fecha_finalizada" Type="DateTime" Precision="3" />
+    <Property Name="firma_tecnico" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="firma_jefe" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="id_tecnico" Type="Int32" />
+    <Property Name="firma_area" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="estado_solicitud" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="id_area_encargada" Type="Int32" />
+    <Property Name="id_compras" Type="Int32" />
+    <Property Name="estado_compras" Type="Int32" />
+    <NavigationProperty Name="NET_COMP_SOLICITUD_COMPRA" Relationship="BdClinicaModel.FK_NET_MTO_SOLICITUDES_NET_COMP_SOLICITUD_COMPRA" FromRole="NET_MTO_SOLICITUDES" ToRole="NET_COMP_SOLICITUD_COMPRA" />
+  </EntityType>
+  <EntityType Name="NET_COMP_SOLICITUD_COMPRA">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="descripcion" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="fecha_solicitud" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="id_servicio_requiere" Type="Int32" Nullable="false" />
+    <Property Name="id_servicio_encargado" Type="Int32" Nullable="false" />
+    <Property Name="usuario_solicitud" Type="String" Nullable="false" MaxLength="22" FixedLength="false" Unicode="true" />
+    <Property Name="id_estado_proceso" Type="Int32" Nullable="false" />
+    <Property Name="fecha_finalizada" Type="DateTime" Precision="3" />
+    <Property Name="numero_oc" Type="Int32" />
+    <NavigationProperty Name="NET_MTO_SOLICITUDES" Relationship="BdClinicaModel.FK_NET_MTO_SOLICITUDES_NET_COMP_SOLICITUD_COMPRA" FromRole="NET_COMP_SOLICITUD_COMPRA" ToRole="NET_MTO_SOLICITUDES" />
+  </EntityType>
+  <Association Name="FK_NET_MTO_SOLICITUDES_NET_COMP_SOLICITUD_COMPRA">
+    <End Type="BdClinicaModel.NET_COMP_SOLICITUD_COMPRA" Role="NET_COMP_SOLICITUD_COMPRA" Multiplicity="0..1" />
+    <End Type="BdClinicaModel.NET_MTO_SOLICITUDES" Role="NET_MTO_SOLICITUDES" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="NET_COMP_SOLICITUD_COMPRA">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="NET_MTO_SOLICITUDES">
+        <PropertyRef Name="id_compras" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>
